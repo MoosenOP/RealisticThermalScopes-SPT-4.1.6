@@ -4,11 +4,15 @@ Unofficial compatibility port of **Realistic Thermal Scopes** by **FiveF**, for 
 
 **Original mod:** https://sp-mod.com/mod/2056/realistic-thermal-scopes
 
+**Original C# source:** https://github.com/FiveFme/Realistic-Thermal-Scopes-csharp
+
+**Original TypeScript source:** https://github.com/FiveFme/realisticThermalScopes
+
 ## Attribution and permission
 
 Realistic Thermal Scopes was originally created by **FiveF**. This is an **unofficial SPT 4.1.6 compatibility port** maintained by **MoosenOP**, published with FiveF's explicit permission conveyed through Forge messages. All original mod assets and associated credits remain attributed to FiveF. This is not an official FiveF release.
 
-The mod source declares `MIT` licensing. FiveF mentioned a possible change to The Unlicense, but no such change is established here. The original complete MIT copyright and license notice must be recovered and retained; it has not yet been added to this repository. FiveF authorized publication of the updated version; confirm the scope of asset-bundle redistribution against the original distribution terms before releasing the binary archive.
+The mod source declares `MIT` licensing. FiveF mentioned a possible change to The Unlicense, but no such change is established here. The original full MIT copyright and license notice (Copyright (c) 2025 FiveF) is preserved in [LICENSE](LICENSE), copied from [FiveF's original C# repository](https://github.com/FiveFme/Realistic-Thermal-Scopes-csharp). FiveF authorized publication of the updated version; confirm the scope of asset-bundle redistribution against the original distribution terms before releasing the binary archive.
 
 ## Compatibility
 
