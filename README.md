@@ -20,7 +20,7 @@ The mod source declares `MIT` licensing. FiveF mentioned a possible change to Th
 - .NET **10** (for building)
 - Less Pixelated edition
 
-The distributed runtime was compared byte-for-byte against the maintainer's working serverpack archive (DLL, manifest, seven bundles). The source included here was recovered from a development checkpoint and has **not** been independently verified to rebuild the exact released DLL.
+The original SPT 4.1.6 runtime was compared byte-for-byte against the maintainer's working serverpack archive (DLL, manifest, seven bundles). **A port-specific GUID update is in progress; the published GitHub v1.0.0 binary still uses the original GUID and must be replaced after a successful rebuild and in-game test.** The source included here was recovered from a development checkpoint and has **not** been independently verified to rebuild the exact released DLL.
 
 ## Installation
 
@@ -36,3 +36,7 @@ The project targets `net10.0`. Its `.csproj` currently contains **local absolute
 
 - **FiveF** — original mod and assets
 - **MoosenOP** — unofficial SPT 4.1.6 compatibility port
+
+## Forge listing GUID
+
+The port-specific Forge GUID is `com.moosenop.realisticthermalscopes.port`. It replaces FiveF's original GUID **only in the updated source** until the DLL is rebuilt and verified. Do not publish a Forge listing claiming this GUID against the current release DLL.
