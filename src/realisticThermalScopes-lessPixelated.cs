@@ -24,7 +24,7 @@ namespace realisticThermalScopes
         public string? Url { get; init; }
         public bool HasPrepatcher { get; init; } = false;
         public string License { get; init; } = "MIT";
-        public string ModGuid { get; init; } = "com.fivef.realisticthermalscopes";
+        public string ModGuid { get; init; } = "com.moosenop.realisticthermalscopes.port";
     }
 
     [Injectable(TypePriority = OnLoadOrder.PostLoad)]
