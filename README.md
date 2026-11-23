@@ -1,42 +1,56 @@
-# Realistic Thermal Scopes — Unofficial SPT 4.1.6 Port
+# Realistic Thermal Scopes — Less Pixelated (Unofficial SPT 4.1.6 Port)
 
-Unofficial compatibility port of **Realistic Thermal Scopes** by **FiveF**, for **SPT 4.1.6**. This repository contains the **Less Pixelated** edition only.
+**Current release: v1.0.1**  
+Original mod and thermal assets by **FiveF**. SPT 4.1.6 port and compatibility fix maintained by **MoosenOP**.
 
-**Original mod:** https://sp-mod.com/mod/2056/realistic-thermal-scopes
+This package retains the original Less Pixelated thermal presentation and scope tuning. Version 1.0.1 resolves bundle-key collisions with **WTT Content Backport 2.0.7** (also works without WTT installed). The six enhanced thermal-scope bundles are registered under unique RTS paths and the six matching item prefab paths are redirected at startup. The MP-155 Ultima thermal-camera bundle remains on its original path.
 
-**Original C# source:** https://github.com/FiveFme/Realistic-Thermal-Scopes-csharp
+## Changes in 1.0.1
 
-**Original TypeScript source:** https://github.com/FiveFme/realisticThermalScopes
+- Fixed six `Unable to add bundle` warnings when RTS and WTT Content Backport are installed together.
+- Namespaced the six scope bundle registration paths without modifying the underlying Unity bundle binaries.
+- Redirected six existing scope item prefabs to the namespaced RTS bundles, leaving WTT's own registrations and files untouched.
+- Preserved existing thermal visuals and zoom / aiming sensitivity tuning; no new items, balancing, or hard dependencies.
 
-## Attribution and permission
+## Supported environment
 
-Realistic Thermal Scopes was originally created by **FiveF**. This is an **unofficial SPT 4.1.6 compatibility port** maintained by **MoosenOP**, published with FiveF's explicit permission conveyed through Forge messages. All original mod assets and associated credits remain attributed to FiveF. This is not an official FiveF release.
+- SPT **4.1.6**; C# .NET **10** for building.
+- WTT Content Backport is **optional**, not a required dependency.
+- Do not run two Realistic Thermal Scopes editions simultaneously under conflicting game item overrides.
 
-The mod source declares `MIT` licensing. FiveF mentioned a possible change to The Unlicense, but no such change is established here. The original full MIT copyright and license notice (Copyright (c) 2025 FiveF) is preserved in [LICENSE](LICENSE), copied from [FiveF's original C# repository](https://github.com/FiveFme/Realistic-Thermal-Scopes-csharp). FiveF authorized publication of the updated version; confirm the scope of asset-bundle redistribution against the original distribution terms before releasing the binary archive.
+## Installation (compiled player ZIP)
 
-## Compatibility
+1. Back up the existing `SPT_Runtime/user/mods/FiveF-realisticThermalScopes_lessPixelated` folder.
+2. **Delete that existing RTS mod folder entirely before installing.** Do not merge with an older build: the old bundle paths must not remain on disk.
+3. Extract the ZIP at the SPT root, preserving the `SPT_Runtime/user/mods/...` hierarchy.
+4. Leave WTT Content Backport unchanged. Restart the server and client; clear client cache if needed.
 
-- SPT **4.1.6**
-- .NET **10** (for building)
-- Less Pixelated edition
+## Verification
 
-The original SPT 4.1.6 runtime was compared byte-for-byte against the maintainer's working serverpack archive (DLL, manifest, seven bundles). **A port-specific GUID update is in progress; the published GitHub v1.0.0 binary still uses the original GUID and must be replaced after a successful rebuild and in-game test.** The source included here was recovered from a development checkpoint and has **not** been independently verified to rebuild the exact released DLL.
+With WTT Content Backport installed, the server log should report `[RTS 1.0.1] Routed 6/6 scope templates`, without the six prior `Unable to add bundle` warnings. Verify the RTS optics' enhanced thermal appearance in-game; a clean startup by itself does not prove the visual assets render correctly. Other mods may still produce unrelated warnings.
 
-## Installation
+Scope templates redirected: FLIR RS-32, SIG ECHO1, Torrey Pines T12W, Armasight Zeus-Pro, Cyclone Shakhin, Trijicon REAP-IR.
 
-Download the release archive and extract it into your SPT installation, preserving the included folder hierarchy. The mod should end up under `SPT_Runtime/user/mods/FiveF-realisticThermalScopes_lessPixelated/` (or the corresponding `user/mods/` folder within your SPT installation).
+## Build from source
 
-Do not install this port alongside another edition of Realistic Thermal Scopes using the same internal mod GUID.
+From the source-kit folder, run PowerShell 5.1:
 
-## Building
+```powershell
+.\BUILD_RELEASE.ps1 -SptRoot 'D:\SPT 4.1.6'
+```
 
-The project targets `net10.0`. Its `.csproj` currently contains **local absolute paths** to SPT 4.1.6 reference assemblies (`D:\SPT 4.1.6\SPT_Runtime`); update those paths for your environment before building. Runtime asset bundles are intentionally not stored in this source repository.
+The script copies SPT runtime reference DLLs to a local `references/` folder (not redistributed), builds the DLL, and creates `RealisticThermalScopes_v1.0.1_SPT416_ReleaseCandidate.zip`. It also prints SHA-256 hashes for the ZIP and compiled DLL. The v1.0.1 player release has passed Windows compilation, startup, in-game verification, and VirusTotal checks.
 
-## Credits
+## Credits and links
 
-- **FiveF** — original mod and assets
-- **MoosenOP** — unofficial SPT 4.1.6 compatibility port
+- FiveF — creator of Realistic Thermal Scopes and original assets. <https://sp-mod.com/mod/2056/realistic-thermal-scopes>
+- FiveF source: <https://github.com/FiveFme/Realistic-Thermal-Scopes-csharp>
+- MoosenOP SPT 4.1.6 port: <https://github.com/MoosenOP/RealisticThermalScopes-SPT-4.1.6>
+- Port listing: <https://sp-mod.com/mod/3390/realistic-thermal-scopes-unofficial-spt-416-port>
 
-## Forge listing GUID
+Distributed with the original source attribution and the included license. This is an unofficial compatibility port, not an official FiveF release.
 
-The port-specific Forge GUID is `com.moosenop.realisticthermalscopes.port`. It replaces FiveF's original GUID **only in the updated source** until the DLL is rebuilt and verified. Do not publish a Forge listing claiming this GUID against the current release DLL.
+
+## GitHub repository asset availability
+
+The GitHub source tree does not include the seven large Unity bundle binaries. See [BINARY_ASSETS.md](BINARY_ASSETS.md) for instructions on obtaining them from the tested release ZIP before building.
